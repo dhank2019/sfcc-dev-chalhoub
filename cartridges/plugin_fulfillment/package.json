@@ -1,0 +1,7 @@
+{
+    "name": "plugin_fulfillment",
+    "version": "1.0.0",
+    "description": "PDP delivery estimation (fulfilment tier) plugin cartridge for SFRA. Extends app_storefront_base without modifying it. Client assets are compiled via the repo's root webpack.config.js (see bin/compilePlugin.js).",
+    "packageName": "plugin_fulfillment",
+    "caches": "./caches.json"
+}

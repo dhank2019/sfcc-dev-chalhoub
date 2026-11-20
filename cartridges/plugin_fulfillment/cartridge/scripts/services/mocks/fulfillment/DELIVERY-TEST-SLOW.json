@@ -1,0 +1,5 @@
+{
+    "statusCode": 200,
+    "tier": "STANDARD",
+    "note": "Sandboxed script execution does not permit blocking sleeps, so this fixture cannot simulate the real 3-5s network delay in mock mode; it is demonstrated against the real/Beeceptor endpoint instead. Kept here only so this scenario key still resolves to a deterministic tier in mock mode."
+}

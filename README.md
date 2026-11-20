@@ -38,6 +38,15 @@ The latest version of SFRA is 8.0.0
 
 8. You should now be ready to navigate to and use your site.
 
+# PDP Delivery Estimation (Fulfilment Tier) Plugin
+
+The `plugin_fulfillment` cartridge adds the PDP "how soon can this be delivered" feature on top of
+`app_storefront_base`, without modifying the base cartridge. Add it to your cartridge path
+**before** `app_storefront_base` (e.g. `plugin_fulfillment:app_storefront_base`).
+
+Full technical setup (Business Manager configuration, Service Framework, content assets, Beeceptor
+mock rules) and a business-user guide are in [docs/DELIVERY-ESTIMATION.md](./docs/DELIVERY-ESTIMATION.md).
+
 # NPM scripts
 
 Use the provided NPM scripts to compile and upload changes to your Sandbox.
@@ -47,6 +56,11 @@ Use the provided NPM scripts to compile and upload changes to your Sandbox.
 -   `npm run compile:scss` - Compiles all .scss files into CSS.
 -   `npm run compile:js` - Compiles all .js files and aggregates them.
 -   `npm run compile:fonts` - Copies all needed font files. Usually, this only has to be run once.
+
+Both `compile:js` and `compile:scss` also compile the `plugin_fulfillment` cartridge's client
+assets (see `bin/compilePlugin.js`). `npm run watch` only watches `app_storefront_base`; after
+editing `plugin_fulfillment`'s client JS/SCSS, re-run the relevant `compile:*` command and
+`npm run uploadCartridge` (or upload just that cartridge).
 
 If you are having an issue compiling scss files, try running 'npm rebuild node-sass' from within your local repo.
 

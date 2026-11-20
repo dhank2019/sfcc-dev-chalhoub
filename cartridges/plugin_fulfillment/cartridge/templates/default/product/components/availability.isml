@@ -1,0 +1,44 @@
+<div class="col-4">
+    <span class="availability non-input-label">
+        ${Resource.msg('label.availability', 'common', null)}:
+    </span>
+</div>
+<div class="col-8">
+    <ul class="list-unstyled availability-msg">
+        <li>
+            <isif condition="${!product.readyToOrder}">
+                <div>${Resource.msg('info.selectforstock', 'product', 'Select Styles for Availability')}</div>
+            <iselse>
+                <isloop items="${product.availability.messages}" var="message">
+                    <div>${message}</div>
+                </isloop>
+            </isif>
+        </li>
+    </ul>
+</div>
+<isif condition="${dw.system.Site.getCurrent().getCustomPreferenceValue('fulfillmentEnabled')}">
+    <isscript>
+        var assets = require('*/cartridge/scripts/assets');
+        assets.addJs('/js/product/deliveryEstimation.js');
+        assets.addCss('/css/product/deliveryEstimation.css');
+    </isscript>
+    <!--- Montserrat, loaded async (preconnect + print/onload swap) so it never blocks render. --->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+    <link rel="stylesheet" media="print" onload="this.media='all'"
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap">
+    <noscript>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap">
+    </noscript>
+
+    <!--- Delivery estimation placeholder, hidden until JS confirms a tier for this variant. --->
+    <div class="col-12 delivery-estimation js-delivery-estimation d-none"
+        data-pid="${product.id}"
+        data-ready-to-order="${product.readyToOrder}"
+        data-available="${product.available}"
+        data-url="${URLUtils.url('Product-Fulfillment')}"
+        aria-live="polite">
+        <div class="delivery-estimation__skeleton" aria-hidden="true"></div>
+        <div class="delivery-estimation__content"></div>
+    </div>
+</isif>

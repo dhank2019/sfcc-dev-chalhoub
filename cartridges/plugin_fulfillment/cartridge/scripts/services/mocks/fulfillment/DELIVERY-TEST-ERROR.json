@@ -1,0 +1,5 @@
+{
+    "statusCode": 500,
+    "error": "internal_error",
+    "message": "Simulated fulfilment outage"
+}
