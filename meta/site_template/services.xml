@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    OPTIONAL CONVENIENCE IMPORT.
+
+    Services XML has THREE distinct elements, which must appear in this order: service-credential,
+    service-profile, service. This import defines the credential's URL only - it intentionally
+    contains NO user-id/password: set those manually in Business Manager (Administration >
+    Operations > Services > Credentials > fulfillment.http.get.cred) so secrets never live in
+    source control. Full manual setup steps are in docs/DELIVERY-ESTIMATION.md - treat that as the
+    authoritative path if this import is rejected by your instance's metadata version.
+-->
+<services xmlns="http://www.demandware.com/xml/impex/services/2014-09-26">
+    <service-credential service-credential-id="fulfillment.http.get.cred">
+        <url>https://sfcc-fulfillment.free.beeceptor.com/fulfillment</url>
+        <!-- Set user-id/password manually in Business Manager - do not commit them here. -->
+    </service-credential>
+
+    <service-profile service-profile-id="fulfillment.http.get.profile">
+        <timeout-millis>5000</timeout-millis>
+        <rate-limit-enabled>false</rate-limit-enabled>
+        <cb-enabled>false</cb-enabled>
+    </service-profile>
+
+    <service service-id="fulfillment.http.get">
+        <service-type>HTTP</service-type>
+        <enabled>true</enabled>
+        <log-prefix>fulfillment</log-prefix>
+        <comm-log-enabled>true</comm-log-enabled>
+        <mock-mode-enabled>false</mock-mode-enabled>
+        <profile-id>fulfillment.http.get.profile</profile-id>
+        <credential-id>fulfillment.http.get.cred</credential-id>
+    </service>
+</services>

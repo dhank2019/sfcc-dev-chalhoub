@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<library xmlns="http://www.demandware.com/xml/impex/library/2006-10-31" library-id="RefArchSharedLibrary">
+    <content content-id="delivery-same-day">
+        <display-name xml:lang="x-default">Delivery Estimation - Same Day</display-name>
+        <online-flag>true</online-flag>
+        <custom-attributes>
+            <custom-attribute attribute-id="body"><![CDATA[<p><strong>⚡ Same-day delivery available</strong><br/>Order in the next few hours and get it delivered today.</p>]]></custom-attribute>
+        </custom-attributes>
+    </content>
+    <content content-id="delivery-next-day">
+        <display-name xml:lang="x-default">Delivery Estimation - Next Day</display-name>
+        <online-flag>true</online-flag>
+        <custom-attributes>
+            <custom-attribute attribute-id="body"><![CDATA[<p><strong>🚚 Next-day delivery available</strong><br/>Order today and receive it tomorrow.</p>]]></custom-attribute>
+        </custom-attributes>
+    </content>
+    <content content-id="delivery-standard">
+        <display-name xml:lang="x-default">Delivery Estimation - Standard</display-name>
+        <online-flag>true</online-flag>
+        <custom-attributes>
+            <custom-attribute attribute-id="body"><![CDATA[<p><strong>📦 Standard delivery</strong><br/>Estimated delivery in 3-5 business days.</p>]]></custom-attribute>
+        </custom-attributes>
+    </content>
+</library>

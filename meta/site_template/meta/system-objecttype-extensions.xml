@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    OPTIONAL CONVENIENCE IMPORT - verify in Business Manager > Administration > Site Development
+    > Import & Export after import, then set per-site values under Merchant Tools > Site
+    Preferences > Fulfillment. If you prefer not to import XML, create these two custom Site
+    Preference attributes manually (steps are in docs/DELIVERY-ESTIMATION.md).
+-->
+<metadata xmlns="http://www.demandware.com/xml/impex/metadata/2006-10-31">
+    <type-extension type-id="SitePreferences">
+        <custom-attribute-definitions>
+            <attribute-definition attribute-id="fulfillmentEnabled">
+                <display-name xml:lang="x-default">Delivery Estimation Enabled</display-name>
+                <description xml:lang="x-default">Master feature flag for the PDP delivery estimation (fulfilment tier) block. When disabled, no markup is rendered and the fulfilment service is never called.</description>
+                <type>boolean</type>
+                <mandatory-flag>false</mandatory-flag>
+                <externally-managed-flag>false</externally-managed-flag>
+                <default-value>false</default-value>
+            </attribute-definition>
+            <attribute-definition attribute-id="fulfillmentCacheTTLMinutes">
+                <display-name xml:lang="x-default">Delivery Estimation Cache TTL (minutes)</display-name>
+                <description xml:lang="x-default">How long a resolved sku+country delivery tier is cached server-side before the fulfilment service may be called again for that combination.</description>
+                <type>int</type>
+                <mandatory-flag>false</mandatory-flag>
+                <externally-managed-flag>false</externally-managed-flag>
+                <default-value>15</default-value>
+            </attribute-definition>
+            <attribute-definition attribute-id="fulfillmentValidTiers">
+                <display-name xml:lang="x-default">Delivery Estimation Valid Tiers</display-name>
+                <description xml:lang="x-default">The set of delivery tier values the fulfilment service is allowed to return. Any service response with a tier outside this set is treated as a failed lookup (never cached, never rendered), so a new/renamed/retired tier can be rolled out from here with no code deployment - as long as a matching "delivery-&lt;tier-lowercase-with-dashes&gt;" Content Asset also exists.</description>
+                <type>set-of-string</type>
+                <mandatory-flag>false</mandatory-flag>
+                <externally-managed-flag>false</externally-managed-flag>
+            </attribute-definition>
+        </custom-attribute-definitions>
+        <group-definitions>
+            <attribute-group group-id="Fulfillment">
+                <display-name xml:lang="x-default">Fulfillment</display-name>
+                <attribute attribute-id="fulfillmentEnabled" />
+                <attribute attribute-id="fulfillmentCacheTTLMinutes" />
+                <attribute attribute-id="fulfillmentValidTiers" />
+            </attribute-group>
+        </group-definitions>
+    </type-extension>
+</metadata>

@@ -1,0 +1,8 @@
+{
+    "caches": [
+        {
+            "id": "fulfillment-tier-cache",
+            "expireAfterSeconds": 900
+        }
+    ]
+}
